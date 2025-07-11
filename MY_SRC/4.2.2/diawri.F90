@@ -121,7 +121,7 @@ CONTAINS
       INTEGER, INTENT( in ) ::   Kmm     ! ocean time level index
       !!
       INTEGER ::   ji, jj, jk       ! dummy loop indices
-      INTEGER ::   ikbot            ! local integer
+      INTEGER ::   ikbot, ikbotm1   ! local integer
       REAL(wp)::   zztmp , zztmpx   ! local scalar
       REAL(wp)::   zztmp2, zztmpy   !   -      -
       REAL(wp)::   ze3
@@ -282,6 +282,14 @@ CONTAINS
          END_2D
          CALL iom_put( "sbu", z2d )                ! bottom i-current
       ENDIF
+	  ! --- Added one above bottom u velocity, sbum1 --- !
+	  IF ( iom_use("sbum1") ) THEN
+         DO_2D( 0, 0, 0, 0 )
+            ikbot = mbku(ji,jj)   ;   ikbotm1 = MAX( ikbot - 1 , 1 )    ! last and before last ocean level at u- & v-points
+            z2d(ji,jj) = uu(ji,jj,ikbotm1,Kmm)
+         END_2D
+         CALL iom_put( "sbum1", z2d )                ! one above bottom i-current
+      ENDIF	  
       
       CALL iom_put( "voce", vv(:,:,:,Kmm) )            ! 3D j-current
       CALL iom_put(  "ssv", vv(:,:,1,Kmm) )            ! surface j-current
@@ -291,6 +299,14 @@ CONTAINS
             z2d(ji,jj) = vv(ji,jj,ikbot,Kmm)
          END_2D
          CALL iom_put( "sbv", z2d )                ! bottom j-current
+      ENDIF
+	  ! --- Added one above bottom v velocity, sbvm1 --- !
+      IF ( iom_use("sbvm1") ) THEN
+         DO_2D( 0, 0, 0, 0 )
+            ikbot = mbkv(ji,jj)   ;   ikbotm1 = MAX( ikbot - 1 , 1 )    ! last and before last ocean level at u- & v-points
+            z2d(ji,jj) = vv(ji,jj,ikbotm1,Kmm)
+         END_2D
+         CALL iom_put( "sbvm1", z2d )                ! one above bottom j-current
       ENDIF
 
       !                                            ! vertical velocity

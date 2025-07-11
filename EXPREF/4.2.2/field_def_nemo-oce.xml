@@ -681,6 +681,7 @@ that are available in the tidal-forcing implementation (see
     <field id="uoce2_e3u"    long_name="ocean current along i-axis squared (thickness weighted)"                                            unit="m3/s2"      grid_ref="grid_U_3D"  > uoce * uoce * e3u </field>
     <field id="ssu"          long_name="ocean surface current along i-axis"                                                                 unit="m/s"                             />
     <field id="sbu"          long_name="ocean bottom current along i-axis"                                                                  unit="m/s"  grid_ref="grid_U_2D_inner" />
+    <field id="sbum1"        long_name="ocean current one above bottom along i-axis"                                                        unit="m/s"  grid_ref="grid_U_2D_inner" />    
     <field id="ubar"         long_name="ocean barotropic current along i-axis"                                                              unit="m/s"                             />
     <field id="uocetr_eff"   long_name="Effective ocean transport along i-axis"                 standard_name="ocean_volume_x_transport"    unit="m3/s"       grid_ref="grid_U_3D" />
     <field id="uocet"        long_name="ocean transport along i-axis times temperature (CRS)"                                               unit="degC*m/s"   grid_ref="grid_U_3D" />
@@ -742,6 +743,7 @@ that are available in the tidal-forcing implementation (see
     <field id="voce2_e3v"    long_name="ocean current along j-axis squared (thickness weighted)"                                            unit="m3/s2"      grid_ref="grid_V_3D"  > voce * voce * e3v </field>
     <field id="ssv"          long_name="ocean surface current along j-axis"                                                                 unit="m/s"                             />
     <field id="sbv"          long_name="ocean bottom current along j-axis"                                                                  unit="m/s"  grid_ref="grid_V_2D_inner" />
+    <field id="sbvm1"        long_name="ocean current one above bottom along j-axis"                                                        unit="m/s"  grid_ref="grid_V_2D_inner" />    
     <field id="vbar"         long_name="ocean barotropic current along j-axis"                                                              unit="m/s"                             />
     <field id="vocetr_eff"   long_name="Effective ocean transport along j-axis"                 standard_name="ocean_volume_y_transport"    unit="m3/s"       grid_ref="grid_V_3D" />
     <field id="vocet"        long_name="ocean transport along j-axis times temperature (CRS)"                                               unit="degC*m/s"   grid_ref="grid_V_3D" />
